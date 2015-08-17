@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router'
+import HeaderContainer from './HeaderContainer'
 
 export default class App extends Component {
   constructor(props) {
@@ -8,30 +8,23 @@ export default class App extends Component {
   }
 
   render() {
-    const { location, children } = this.props;
+    const { location, children, user:{login} } = this.props;
     const { pathname } = location;
     const value = pathname.substring(1);
 
     return (
       <div>
-        <header>
-          <ul>
-            <li><Link to="/main">Main</Link></li>
-            <li><Link to="/contacts">Contacts</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            <li><Link to="/admin">Admin</Link></li>
-          </ul>
-        </header>
+        <HeaderContainer />
         {children}
       </div>
     )
   }
 }
 
-/*function select(state) {
+function select(state) {
   return {
-    user: state.user
+    user: state.mainstate.user
   };
 }
 
-export default connect(select)(App);*/
+export default connect(select)(App);

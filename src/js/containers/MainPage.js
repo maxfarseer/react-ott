@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as AuthPopupActions from '../actions/AuthPopupActions';
+import * as AppActions from '../actions/AppActions';
 
 import Main from '../components/Main';
 
 class MainPage extends Component {
-  showPopup() {
-
-  }
-  hidePopup() {
-
-  }
   render() {
-    const { authPopup, dispatch } = this.props;
-    const actions = bindActionCreators(AuthPopupActions, dispatch);
+    const { authPopup, user, dispatch } = this.props;
+    const actions = bindActionCreators(AppActions, dispatch);
 
     return (
       <div>
-        <Main authPopup={authPopup} actions={actions}/>
+        <Main authPopup={authPopup} actions={actions} user={user} />
         <button onClick={actions.showPopup}>SHOW</button>
         <button onClick={actions.hidePopup}>HIDE</button>
       </div>
@@ -28,7 +22,8 @@ class MainPage extends Component {
 
 function select(state) {
   return {
-    authPopup: state.mainstate.authPopup
+    authPopup: state.mainstate.authPopup,
+    user: state.mainstate.user
   };
 }
 

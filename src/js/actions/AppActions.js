@@ -12,9 +12,15 @@ export function hidePopup() {
   };
 }
 
-export function clearMarked(qq) {
+export function login(user) {
   return {
-    type: types.CLEAR_MARKED,
-    qq
+    type: types.LOGIN,
+    user
+  };
+}
+
+export function logout() {
+  return {
+    type: types.LOGOUT
   };
 }
