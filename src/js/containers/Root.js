@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Router, Route } from 'react-router'
 import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import rootReducer from '../reducers';
 
@@ -17,7 +18,7 @@ const logger = store => next => action => {
   return result;
 };
 
-let createStoreWithMiddleware = applyMiddleware(logger)(createStore);
+let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, logger)(createStore);
 
 const store = createStoreWithMiddleware(rootReducer);
 

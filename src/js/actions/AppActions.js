@@ -21,6 +21,23 @@ export function login(user) {
 
 export function logout() {
   return {
-    type: types.LOGOUT
+    type: types.LOGOUT,
+  };
+}
+
+export function hangleLogout() {
+
+  return function (dispatch) {
+    //dispatch(requestLogout(username));
+    //TODO: dispatch logout request
+    console.log('LOGOUT REQUEST');
+
+    //fake delay for logout
+    return setTimeout(() => {
+      //logout success
+      dispatch(logout());
+      window.location.hash="/#/main";
+    },1000)
+
   };
 }
