@@ -10,6 +10,7 @@ import MainPage from './MainPage';
 import ContactsPage from './ContactsPage';
 import ProfilePage from './ProfilePage';
 import AdminPage from './AdminPage';
+import AdminHomePage from './AdminHomePage';
 
 const logger = store => next => action => {
   console.log('dispatching', action);
@@ -22,11 +23,6 @@ let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, logger)(createS
 
 const store = createStoreWithMiddleware(rootReducer);
 
-function requireLogin(store) {
-  //console.log(store.getState());
-  console.log('login require');
-}
-
 export default class Root extends Component {
   render() {
     return (
@@ -35,14 +31,12 @@ export default class Root extends Component {
           {() =>
             <Router history={this.props.history}>
               <Route component={App}>
-                <Route path='/main'
-                       component={MainPage} />
-                <Route path='/contacts'
-                       component={ContactsPage} />
-                <Route path='/profile'
-                       component={ProfilePage} />
-                <Route path='/admin'
-                       component={AdminPage} onEnter={requireLogin.bind(this,store)}/>
+                <Route path='/main' component={MainPage} />
+                <Route path='/contacts' component={ContactsPage} />
+                <Route path='/profile' component={ProfilePage} />
+                <Route path='/administrator' component={AdminPage} onEnter={AdminPage.onEnter(store)}>
+                  <Route path='/main' component={AdminHomePage} />
+                </Route>
                 <Redirect from="/" to="/main" />
               </Route>
             </Router>

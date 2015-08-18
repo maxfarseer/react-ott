@@ -13,8 +13,6 @@ class MainPage extends Component {
     return (
       <div>
         <Main authPopup={authPopup} actions={actions} user={user} />
-        <button onClick={actions.showPopup}>SHOW</button>
-        <button onClick={actions.hidePopup}>HIDE</button>
       </div>
     )
   }

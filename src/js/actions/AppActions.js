@@ -19,6 +19,19 @@ export function login(user) {
   };
 }
 
+export function hangleLogin(user) {
+  return function (dispatch) {
+    console.log('LOGIN REQUEST');
+    //fake delay for login
+    return setTimeout(() => {
+      //login success
+      dispatch(login(user));
+      dispatch(hidePopup());
+      window.location.hash='administrator/main';
+    },1000)
+  };
+}
+
 export function logout() {
   return {
     type: types.LOGOUT,
@@ -26,18 +39,13 @@ export function logout() {
 }
 
 export function hangleLogout() {
-
   return function (dispatch) {
-    //dispatch(requestLogout(username));
-    //TODO: dispatch logout request
     console.log('LOGOUT REQUEST');
-
     //fake delay for logout
     return setTimeout(() => {
       //logout success
       dispatch(logout());
-      window.location.hash="/#/main";
+      window.location.hash="main";
     },1000)
-
   };
 }

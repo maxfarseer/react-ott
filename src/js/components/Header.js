@@ -11,11 +11,11 @@ export default class Header extends Component {
         <ul>
           <li><Link to="/main">Main</Link></li>
           <li><Link to="/contacts">Contacts</Link></li>
-          <li className={login ? 'none': ''}><Link to="/signin">Sign In</Link></li>
           <li className={login ? '': 'none'}><Link to="/profile">Profile</Link></li>
-          <li className={login ? '': 'none'} onClick={actions.hangleLogout}>Sign out</li>
           {/*<li><Link to="/admin">Admin</Link></li>*/}
         </ul>
+        <button className={login ? 'none': ''} onClick={actions.showPopup}>Sign In</button>
+        <button className={login ? '': 'none'} onClick={actions.hangleLogout}>Sign Out</button>
       </header>
     );
   }

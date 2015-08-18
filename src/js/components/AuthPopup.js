@@ -9,8 +9,7 @@ export default class AuthPopup extends Component {
   }
   goAuthenticate() {
     //let username = React.findDOMNode(this.refs.login).value;
-    this.props.actions.login(this.state.login);
-    this.props.actions.hidePopup();
+    this.props.actions.hangleLogin(this.state.login);
   }
   handleChange(e) {
     this.setState({login: e.target.value})
