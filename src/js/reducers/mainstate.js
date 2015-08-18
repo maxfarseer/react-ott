@@ -12,7 +12,7 @@ const initialState = {
   authPopup: {
     isShown: false
   },
-  loading: true
+  loading: false
 };
 
 export default function mainstate(state = initialState, action) {
