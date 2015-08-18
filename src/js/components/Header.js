@@ -7,15 +7,17 @@ export default class Header extends Component {
     const { login,actions } = this.props;
 
     return (
-      <header>
-        <ul>
-          <li><Link to="/main">Main</Link></li>
-          <li><Link to="/contacts">Contacts</Link></li>
-          <li className={login ? '': 'none'}><Link to="/profile">Profile</Link></li>
-          {/*<li><Link to="/admin">Admin</Link></li>*/}
+      <header className='header'>
+        <ul className='header-links'>
+          <li className='header-links__item'><Link to='/main'>Main</Link></li>
+          <li className='header-links__item'><Link to='/contacts'>Contacts</Link></li>
+          <li className={'header-links__item ' + (login ? '': 'none')}><Link to='/profile'>Profile</Link></li>
+          {/*<li><Link to='/admin'>Admin</Link></li>*/}
         </ul>
-        <button className={login ? 'none': ''} onClick={actions.showPopup}>Sign In</button>
-        <button className={login ? '': 'none'} onClick={actions.hangleLogout}>Sign Out</button>
+        <span className='header-btn-wrapper'>
+          <button className={'header-btn ' + (login ? 'none': '')} onClick={actions.showPopup}>Sign In</button>
+          <button className={'header-btn ' + (login ? '': 'none')} onClick={actions.hangleLogout}>Sign Out</button>
+        </span>
       </header>
     );
   }

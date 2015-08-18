@@ -5,7 +5,7 @@ export default class AdminHome extends Component {
   render() {
     return (
       <div>
-        AdminHome page
+        <p>AdminHome page</p>
       </div>
     );
   }

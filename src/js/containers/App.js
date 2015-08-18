@@ -12,15 +12,24 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const { children, authPopup, user, dispatch } = this.props;
+    const { children, authPopup, user, dispatch, loading } = this.props;
     const actions = bindActionCreators(AppActions, dispatch);
+    let isLoading;
+
+    if (loading) {
+      isLoading = (<div className='loading'></div>);
+    }
+
     return (
       <div>
-        <HeaderContainer />
-        {children}
-        <AuthPopupContainer authPopup={authPopup} actions={actions} user={user} />
+        <div className='app'>
+          <HeaderContainer />
+          {children}
+          <AuthPopupContainer authPopup={authPopup} actions={actions} user={user} />
+        </div>
+        {isLoading}
       </div>
+
     )
   }
 }
@@ -28,7 +37,8 @@ export default class App extends Component {
 function select(state) {
   return {
     authPopup: state.mainstate.authPopup,
-    user: state.mainstate.user
+    user: state.mainstate.user,
+    loading: state.mainstate.loading
   };
 }
 

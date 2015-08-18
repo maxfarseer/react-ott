@@ -1,5 +1,17 @@
 import * as types from '../constants/Types';
 
+export function loadingBegin() {
+  return {
+    type: types.LOADING_BEGIN
+  };
+}
+
+export function loadingDone() {
+  return {
+    type: types.LOADING_DONE
+  };
+}
+
 export function showPopup() {
   return {
     type: types.SHOW_POPUP
@@ -21,12 +33,13 @@ export function login(user) {
 
 export function hangleLogin(user) {
   return function (dispatch) {
-    console.log('LOGIN REQUEST');
+    dispatch(loadingBegin());
+    dispatch(hidePopup());
     //fake delay for login
     return setTimeout(() => {
       //login success
       dispatch(login(user));
-      dispatch(hidePopup());
+      dispatch(loadingDone());
       window.location.hash='administrator/main';
     },1000)
   };
@@ -40,12 +53,13 @@ export function logout() {
 
 export function hangleLogout() {
   return function (dispatch) {
-    console.log('LOGOUT REQUEST');
+    dispatch(loadingBegin());
     //fake delay for logout
     return setTimeout(() => {
       //logout success
       dispatch(logout());
       window.location.hash="main";
+      dispatch(loadingDone());
     },1000)
   };
 }

@@ -1,4 +1,8 @@
-import {SHOW_POPUP, HIDE_POPUP, LOGIN, LOGOUT} from '../constants/Types';
+import {
+  SHOW_POPUP, HIDE_POPUP,
+  LOGIN, LOGOUT,
+  LOADING_BEGIN, LOADING_DONE
+} from '../constants/Types';
 
 const initialState = {
   user: {
@@ -7,7 +11,8 @@ const initialState = {
   },
   authPopup: {
     isShown: false
-  }
+  },
+  loading: true
 };
 
 export default function mainstate(state = initialState, action) {
@@ -45,6 +50,18 @@ export default function mainstate(state = initialState, action) {
           pass: ''
         }
       }
+
+  case LOADING_BEGIN:
+    return {
+      ...state,
+      loading: true
+    }
+
+  case LOADING_DONE:
+    return {
+      ...state,
+      loading: false
+    }
 
   default:
     return state;
