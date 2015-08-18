@@ -37,7 +37,7 @@ export default class Root extends Component {
                 <Route path='/administrator' component={AdminPage} onEnter={AdminPage.onEnter(store)}>
                   <Route path='/main' component={AdminHomePage} />
                 </Route>
-                <Redirect from="/" to="/main" />
+                <Redirect from="/" to="main" />
               </Route>
             </Router>
           }

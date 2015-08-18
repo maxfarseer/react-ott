@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HeaderContainer from './HeaderContainer'
+import { bindActionCreators } from 'redux';
+import * as AppActions from '../actions/AppActions';
+
+import HeaderContainer from './HeaderContainer';
+import AuthPopupContainer from './AuthPopupContainer';
 
 export default class App extends Component {
   constructor(props) {
@@ -8,14 +12,14 @@ export default class App extends Component {
   }
 
   render() {
-    const { location, children, user:{login} } = this.props;
-    const { pathname } = location;
-    const value = pathname.substring(1);
-
+    console.log(this.props);
+    const { children, authPopup, user, dispatch } = this.props;
+    const actions = bindActionCreators(AppActions, dispatch);
     return (
       <div>
         <HeaderContainer />
         {children}
+        <AuthPopupContainer authPopup={authPopup} actions={actions} user={user} />
       </div>
     )
   }
@@ -23,6 +27,7 @@ export default class App extends Component {
 
 function select(state) {
   return {
+    authPopup: state.mainstate.authPopup,
     user: state.mainstate.user
   };
 }
