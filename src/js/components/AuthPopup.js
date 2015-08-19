@@ -4,7 +4,7 @@ export default class AuthPopup extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      login: this.props.login || ''
+      login: this.props.user.login || ''
     };
   }
   goAuthenticate() {
@@ -14,7 +14,7 @@ export default class AuthPopup extends Component {
     this.setState({login: e.target.value})
   }
   render() {
-    const { isShown, actions } = this.props;
+    const { actions, authPopup: {isShown} } = this.props;
     let login = this.state.login;
     return (
       <div className={'auth-wrapper ' + (isShown ? '': 'auth-wrapper_hide')}>

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../actions/AppActions';
 
-import HeaderContainer from './HeaderContainer';
-import AuthPopupContainer from './AuthPopupContainer';
+import Header from '../components/Header';
+import AuthPopup from '../components/AuthPopup';
 
 export default class App extends Component {
   constructor(props) {
@@ -23,9 +23,9 @@ export default class App extends Component {
     return (
       <div>
         <div className='app'>
-          <HeaderContainer />
+          <Header actions={actions} user={user} />
           {children}
-          <AuthPopupContainer authPopup={authPopup} actions={actions} user={user} />
+          <AuthPopup actions={actions} user={user}  authPopup={authPopup} />
         </div>
         {isLoading}
       </div>

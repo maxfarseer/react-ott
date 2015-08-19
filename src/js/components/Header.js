@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default class Header extends Component {
 
   render() {
-    const { login,actions } = this.props;
+    const { user: {login}, actions } = this.props;
 
     return (
       <header className='header'>
