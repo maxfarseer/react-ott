@@ -4,7 +4,7 @@ import { showPopup } from '../actions/AppActions';
 export default class AdminPage extends Component {
   static onEnter(store) {
     return (nextState, transition) => {
-      const { user: { login }} = store.getState().mainstate;
+      const { user: { login }} = store.getState();
       if (!login) {
         store.dispatch(showPopup());
         transition.to('/');

@@ -1,19 +1,19 @@
 import {
-  LOADING_BEGIN, LOADING_DONE
+  LOGIN, LOGOUT,
 } from '../constants/Types';
 
 const initialState = {
-  loading: false
+  login: '',
+  pass: ''
 };
 
 export default function mainstate(state = initialState, action) {
   switch (action.type) {
+  case LOGIN:
+    return {...state,login: action.user, pass: 'fakepass'}
 
-  case LOADING_BEGIN:
-    return { ...state,loading: true }
-
-  case LOADING_DONE:
-    return { ...state,loading: false }
+  case LOGOUT:
+    return {...state,login: '', pass: ''}
 
   default:
     return state;

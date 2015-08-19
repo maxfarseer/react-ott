@@ -16,7 +16,7 @@ class ProfilePage extends Component {
 
 function select(state) {
   return {
-    user: state.mainstate.user
+    user: state.user
   };
 }
 

@@ -36,9 +36,9 @@ export default class App extends Component {
 
 function select(state) {
   return {
-    authPopup: state.mainstate.authPopup,
-    user: state.mainstate.user,
-    loading: state.mainstate.loading
+    authPopup: state.authPopup,
+    user: state.user,
+    loading: state.mainstate.loading //todo state - NETWORK?
   };
 }
 
