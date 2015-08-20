@@ -1,4 +1,5 @@
 import * as types from '../constants/Types';
+import 'isomorphic-fetch';
 
 export function loadingBegin() {
   return {
@@ -33,6 +34,23 @@ export function login(user) {
 
 export function hangleLogin(user) {
   return function (dispatch) {
+    /*fetch('https://api.github.com/users/maxfarseer')
+      .then(res =>
+        res.json().then(json => ())
+      )*/
+
+    fetch('https://api.github.com/users/maxfarseer')
+      .then(function(response) {
+        if (response.status >= 400) {
+            throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+      });
+
+
     dispatch(loadingBegin());
     dispatch(hidePopup());
     //fake delay for login
